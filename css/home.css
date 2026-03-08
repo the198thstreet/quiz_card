@@ -35,6 +35,12 @@ body {
   overscroll-behavior-y: contain;
 }
 
+body,
+body * {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 body::before {
   content: "";
   position: fixed;
