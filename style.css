@@ -1,0 +1,192 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f5f7;
+  color: #222;
+}
+
+.app {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.header p {
+  margin: 0;
+  color: #666;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.toolbar-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+select,
+button {
+  border: 1px solid #d0d7de;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover,
+select:hover {
+  background: #f9fafb;
+}
+
+.status {
+  text-align: center;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.card-section {
+  perspective: 1000px;
+}
+
+.flashcard {
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 24px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: #fffbe8;
+}
+
+.card-subject {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.card-label {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.5;
+  white-space: pre-line;
+  word-break: keep-all;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 390px;
+  flex-wrap: wrap;
+}
+
+/* 태블릿 */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .flashcard {
+    min-height: 320px;
+  }
+
+  .card-text {
+    font-size: 24px;
+  }
+
+  .controls {
+    margin-top: 350px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 480px) {
+  .app {
+    padding: 16px 12px 30px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .toolbar-buttons {
+    width: 100%;
+  }
+
+  .toolbar-buttons button,
+  select {
+    width: 100%;
+  }
+
+  .flashcard {
+    min-height: 280px;
+  }
+
+  .card-face {
+    padding: 18px;
+  }
+
+  .card-text {
+    font-size: 20px;
+  }
+
+  .controls {
+    margin-top: 310px;
+  }
+
+  .controls button {
+    flex: 1;
+    min-width: 120px;
+  }
+}

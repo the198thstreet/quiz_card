@@ -1,0 +1,37 @@
+[
+  {
+    "subject": "DB",
+    "question": "ACID",
+    "answer": "Atomicity\nConsistency\nIsolation\nDurability"
+  },
+  {
+    "subject": "DB",
+    "question": "정규화 1NF",
+    "answer": "모든 속성 값이 원자값"
+  },
+  {
+    "subject": "DB",
+    "question": "RAID 5",
+    "answer": "스트라이핑 + 분산 패리티"
+  },
+  {
+    "subject": "네트워크/OS",
+    "question": "RIP",
+    "answer": "거리 벡터 알고리즘\n홉 수 기준"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 드라이버",
+    "answer": "상향식 테스트에서 상위 모듈 역할"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Singleton",
+    "answer": "객체를 하나만 생성"
+  },
+  {
+    "subject": "보안/신기술",
+    "question": "AES",
+    "answer": "대칭키 블록 암호 알고리즘\n128비트 블록"
+  }
+]

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>정보처리기사 카드퀴즈</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>정보처리기사 카드퀴즈</h1>
+    <p>카드를 눌러 정답 보기</p>
+  </header>
+
+  <section class="toolbar">
+    <select id="subjectFilter">
+      <option value="전체">전체</option>
+    </select>
+
+    <div class="toolbar-buttons">
+      <button id="shuffleBtn">셔플</button>
+      <button id="flipBtn">뒤집기</button>
+    </div>
+  </section>
+
+  <section class="status">
+    <span id="cardInfo">0 / 0</span>
+  </section>
+
+  <section class="card-section">
+    <div class="flashcard" id="flashCard">
+      <div class="card-face card-front">
+        <div class="card-subject" id="frontSubject">과목</div>
+        <div class="card-label">문제</div>
+        <div class="card-text" id="frontText">카드를 불러오는 중입니다</div>
+      </div>
+
+      <div class="card-face card-back">
+        <div class="card-subject">정답</div>
+        <div class="card-label">답</div>
+        <div class="card-text" id="backText">잠시만 기다려주세요</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="controls">
+    <button id="prevBtn">이전</button>
+    <button id="nextBtn">다음</button>
+  </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
