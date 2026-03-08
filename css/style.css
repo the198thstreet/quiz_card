@@ -123,6 +123,7 @@ body::before {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
+  flex-wrap: nowrap;
   margin-bottom: 14px;
 }
 
@@ -152,6 +153,8 @@ body::before {
     box-shadow 0.2s ease,
     background-color 0.2s ease,
     border-color 0.2s ease;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .hero-home-link:hover {
@@ -598,6 +601,8 @@ select:focus-visible,
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 #nextBtn {
@@ -638,16 +643,37 @@ select:focus-visible,
   }
 
   .hero-copy {
-    padding: 22px;
+    padding: 20px;
   }
 
   .hero-headerline {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .hero-kicker {
+    font-size: 12px;
+  }
+
+  .hero h1 {
+    white-space: normal;
+    line-height: 1.08;
+  }
+
+  .hero p {
+    margin-top: 8px;
+    font-size: 0.94rem;
+    line-height: 1.52;
   }
 
   .stat-row {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat-pill-known {
+    grid-column: 1 / -1;
   }
 
   .toolbar {
@@ -708,8 +734,18 @@ select:focus-visible,
   }
 
   .meta-card-head {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .meta-card {
+    padding: 18px;
+  }
+
+  .meta-card-stats {
+    gap: 12px;
   }
 }
 
@@ -733,15 +769,41 @@ select:focus-visible,
   }
 
   .stat-row,
-  .mode-switch,
   .toolbar-buttons,
   .controls,
   .study-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .mode-switch {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mode-switch .mode-btn[data-mode="unmarked"] {
+    grid-column: 1 / -1;
+  }
+
+  .study-btn-reset {
+    grid-column: 1 / -1;
+  }
+
+  .hero-home-link,
+  .meta-reset-btn {
+    min-height: 36px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .hero-copy {
+    padding: 18px;
+  }
+
+  .meta-card {
+    padding: 16px;
+  }
+
   .study-actions {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
