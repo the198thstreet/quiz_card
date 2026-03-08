@@ -3,12 +3,12 @@
   "name": "정보처리기사 실기 카드퀴즈",
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "icon.svg?v=2",
       "type": "image/svg+xml",
       "sizes": "any"
     },
     {
-      "src": "icon.png",
+      "src": "icon.png?v=2",
       "type": "image/png",
       "sizes": "192x192"
     }
