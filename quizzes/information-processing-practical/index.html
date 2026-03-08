@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="정보처리기사 실기 전 범위를 과목별 카드 퀴즈로 반복 학습하는 개인용 학습 페이지입니다. DB, 네트워크·OS, SW개발, SW설계, 보안·신기술 카드를 담고 있습니다." />
+  <meta name="robots" content="index, follow" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="theme-color" content="#f5f5f7" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="정보처리기사 실기 카드퀴즈" />
+  <meta property="og:description" content="과목별 카드 퀴즈로 정보처리기사 실기 이론을 반복 학습하는 페이지입니다." />
+  <meta property="og:image" content="../../og-image.png?v=1" />
+  <meta property="og:image:alt" content="정보처리기사 실기 카드퀴즈 공유 이미지" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="정보처리기사 실기 카드퀴즈" />
+  <meta name="twitter:description" content="DB, 네트워크·OS, SW개발, SW설계, 보안·신기술 카드를 반복 학습할 수 있는 카드 퀴즈입니다." />
+  <meta name="twitter:image" content="../../og-image.png?v=1" />
+  <title>정보처리기사 실기 카드퀴즈</title>
+  <link rel="icon" href="../../icon.svg?v=2" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../../icon.png?v=2" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body
+  data-card-manifest="../../js/cards/index.json"
+  data-storage-key="quiz-card-state:information-processing-practical"
+>
+  <div class="page-glow page-glow-left" aria-hidden="true"></div>
+  <div class="page-glow page-glow-right" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <div class="app">
+      <header class="hero">
+        <div class="hero-copy">
+          <div class="hero-headerline">
+            <span class="hero-kicker">스터디 카드 아카이브</span>
+            <a class="hero-home-link" href="../../">홈으로</a>
+          </div>
+          <h1>정보처리기사 실기 카드퀴즈</h1>
+          <p>핵심 개념만 빠르게 반복해 기억에 남도록 구성한 학습용 카드 화면입니다. 과목을 고른 뒤 문제를 넘기고, 상태를 기록하면서 복습 흐름을 정리할 수 있습니다.</p>
+        </div>
+
+        <div class="hero-meta">
+          <div class="meta-card">
+            <span class="meta-label">진행도</span>
+            <strong id="cardInfo" aria-live="polite">0 / 0</strong>
+            <div class="progress-track" aria-hidden="true">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="meta-footnote" id="progressText" aria-live="polite">카드를 불러오는 중</span>
+          </div>
+          <div class="meta-card meta-card-stats">
+            <div class="meta-card-head">
+              <span class="meta-label">학습 상태</span>
+              <button id="resetAllBtn" class="meta-reset-btn" type="button">전체 초기화</button>
+            </div>
+            <div class="stat-row">
+              <div class="stat-pill stat-pill-review">
+                <span>복습 필요</span>
+                <strong id="reviewCount">0</strong>
+              </div>
+              <div class="stat-pill stat-pill-unmarked">
+                <span>미분류</span>
+                <strong id="unmarkedCount">0</strong>
+              </div>
+              <div class="stat-pill stat-pill-known">
+                <span>학습 완료</span>
+                <strong id="knownCount">0</strong>
+              </div>
+            </div>
+            <span class="meta-footnote" id="studyModeText" aria-live="polite">전체 카드 학습 중</span>
+            <span class="meta-footnote meta-footnote-compact" id="studySummaryText" aria-live="polite">완료율 0% · 복습 0% · 오늘 0장</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="toolbar-panel">
+        <div class="toolbar">
+          <label class="field">
+            <span class="field-label">과목 선택</span>
+            <select id="subjectFilter" aria-label="과목 선택">
+              <option value="전체">전체</option>
+            </select>
+          </label>
+
+          <div class="field field-mode">
+            <span class="field-label">학습 보기</span>
+            <div class="mode-switch" id="modeSwitch">
+              <button class="mode-btn is-active" type="button" data-mode="all" aria-pressed="true">전체</button>
+              <button class="mode-btn" type="button" data-mode="review" aria-pressed="false">복습 필요만</button>
+              <button class="mode-btn" type="button" data-mode="unmarked" aria-pressed="false">안 본 카드만</button>
+            </div>
+          </div>
+
+          <div class="toolbar-buttons">
+            <button id="shuffleBtn" type="button">문제 섞기</button>
+            <button id="flipBtn" type="button" aria-pressed="false">정답 보기</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card-section">
+        <div class="flashcard" id="flashCard" tabindex="0" aria-label="퀴즈 카드">
+          <div class="card-face card-front">
+            <div class="card-topline">
+              <div class="card-subject" id="frontSubject">과목</div>
+              <div class="card-topmeta">
+                <div class="card-status-badge" id="cardStatusBadge">미분류</div>
+                <div class="card-chip">Question</div>
+              </div>
+            </div>
+            <div class="card-label">문제</div>
+            <div class="card-text" id="frontText">카드를 불러오는 중입니다</div>
+            <div class="card-hint">카드를 탭하면 정답이 표시됩니다</div>
+          </div>
+
+          <div class="card-face card-back">
+            <div class="card-topline">
+              <div class="card-subject">정답 확인</div>
+              <div class="card-chip">Answer</div>
+            </div>
+            <div class="card-label">답</div>
+            <div class="card-text" id="backText">잠시만 기다려주세요</div>
+            <div class="card-hint">다시 탭하면 문제로 돌아갑니다</div>
+          </div>
+        </div>
+        <div class="gesture-hint">좌우로 밀면 이전 문제 또는 다음 문제로 이동합니다</div>
+      </section>
+
+      <section class="controls">
+        <button id="prevBtn" type="button">이전</button>
+        <button id="nextBtn" type="button">다음</button>
+      </section>
+
+      <section class="study-actions" aria-label="학습 상태 제어">
+        <button id="reviewBtn" class="study-btn study-btn-review" type="button">복습하기 등록</button>
+        <button id="knownBtn" class="study-btn study-btn-known" type="button">학습완료 처리</button>
+        <button id="resetBtn" class="study-btn study-btn-reset" type="button">이 카드 상태 지우기</button>
+      </section>
+    </div>
+  </div>
+
+  <script src="../../js/app.js"></script>
+</body>
+</html>

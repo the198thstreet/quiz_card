@@ -1,0 +1,41 @@
+{
+  "items": [
+    {
+      "title": "정보처리기사 실기",
+      "description": "DB부터 보안·신기술까지 총 576개 카드로 반복 학습할 수 있는 실기 카드 퀴즈입니다.",
+      "href": "quizzes/information-processing-practical/",
+      "status": "live",
+      "meta": "지금 바로 시작"
+    },
+    {
+      "title": "준비중",
+      "description": "다음 카드 퀴즈가 추가될 자리입니다.",
+      "status": "coming-soon",
+      "meta": "추가 예정"
+    },
+    {
+      "title": "준비중",
+      "description": "새로운 카드 퀴즈가 이어질 자리입니다.",
+      "status": "coming-soon",
+      "meta": "추가 예정"
+    },
+    {
+      "title": "준비중",
+      "description": "다음 카드 퀴즈가 추가될 자리입니다.",
+      "status": "coming-soon",
+      "meta": "추가 예정"
+    },
+    {
+      "title": "준비중",
+      "description": "새로운 카드 퀴즈가 이어질 자리입니다.",
+      "status": "coming-soon",
+      "meta": "추가 예정"
+    },
+    {
+      "title": "준비중",
+      "description": "다음 카드 퀴즈가 추가될 자리입니다.",
+      "status": "coming-soon",
+      "meta": "추가 예정"
+    }
+  ]
+}

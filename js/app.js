@@ -7,7 +7,9 @@ let touchStartY = 0;
 let suppressClick = false;
 let studyMode = "all";
 
-const STORAGE_KEY = "quiz-card-state";
+const DEFAULT_SUBJECT = "전체";
+const STORAGE_KEY = document.body.dataset.storageKey || "quiz-card-state";
+const CARD_MANIFEST_PATH = document.body.dataset.cardManifest || "js/cards/index.json";
 const CARD_STATUS = {
   review: "review",
   known: "known"
@@ -20,15 +22,19 @@ const backText = document.getElementById("backText");
 const cardInfo = document.getElementById("cardInfo");
 const subjectFilter = document.getElementById("subjectFilter");
 const flipBtn = document.getElementById("flipBtn");
+const cardStatusBadge = document.getElementById("cardStatusBadge");
 const progressFill = document.getElementById("progressFill");
 const progressText = document.getElementById("progressText");
 const reviewCount = document.getElementById("reviewCount");
+const unmarkedCount = document.getElementById("unmarkedCount");
 const knownCount = document.getElementById("knownCount");
 const studyModeText = document.getElementById("studyModeText");
+const studySummaryText = document.getElementById("studySummaryText");
 const modeSwitch = document.getElementById("modeSwitch");
 const reviewBtn = document.getElementById("reviewBtn");
 const knownBtn = document.getElementById("knownBtn");
-const CARD_MANIFEST_PATH = "js/cards/index.json";
+const resetBtn = document.getElementById("resetBtn");
+const resetAllBtn = document.getElementById("resetAllBtn");
 
 function getCardKey(card) {
   return `${card.subject}::${card.question}`;
@@ -42,22 +48,23 @@ function getSavedState() {
   }
 }
 
+function persistState(nextState) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(nextState));
+}
+
 function saveState() {
-  const activeSubject = subjectFilter.value || "전체";
+  const activeSubject = subjectFilter.value || DEFAULT_SUBJECT;
   const currentCard = filteredCards[currentIndex];
   const savedState = getSavedState();
-  const cardKey = currentCard ? getCardKey(currentCard) : "";
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({
-      learning: savedState.learning || {},
-      subject: activeSubject,
-      cardKey,
-      isFlipped,
-      studyMode
-    })
-  );
+  persistState({
+    learning: savedState.learning || {},
+    viewed: savedState.viewed || {},
+    subject: activeSubject,
+    cardKey: currentCard ? getCardKey(currentCard) : "",
+    isFlipped,
+    studyMode
+  });
 }
 
 function saveLearningStatus(card, status) {
@@ -65,21 +72,68 @@ function saveLearningStatus(card, status) {
   const learning = savedState.learning || {};
   learning[getCardKey(card)] = status;
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({
-      ...savedState,
-      learning,
-      subject: subjectFilter.value || "전체",
-      cardKey: getCardKey(card),
-      isFlipped,
-      studyMode
-    })
-  );
+  persistState({
+    ...savedState,
+    learning,
+    subject: subjectFilter.value || DEFAULT_SUBJECT,
+    cardKey: getCardKey(card),
+    isFlipped,
+    studyMode
+  });
 }
 
 function getLearningMap() {
   return getSavedState().learning || {};
+}
+
+function getTodayStamp() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function recordViewedCard(card) {
+  const savedState = getSavedState();
+  const viewed = savedState.viewed || {};
+  const today = getTodayStamp();
+  const todayViewed = new Set(viewed[today] || []);
+  todayViewed.add(getCardKey(card));
+
+  persistState({
+    ...savedState,
+    viewed: {
+      ...viewed,
+      [today]: [...todayViewed]
+    }
+  });
+}
+
+function clearLearningStatus(card) {
+  const savedState = getSavedState();
+  const learning = savedState.learning || {};
+  delete learning[getCardKey(card)];
+
+  persistState({
+    ...savedState,
+    learning,
+    subject: subjectFilter.value || DEFAULT_SUBJECT,
+    cardKey: filteredCards[currentIndex] ? getCardKey(filteredCards[currentIndex]) : "",
+    isFlipped,
+    studyMode
+  });
+}
+
+function clearAllLearningState() {
+  persistState({
+    learning: {},
+    viewed: {},
+    isFlipped: false,
+    studyMode: "all",
+    cardKey: "",
+    subject: DEFAULT_SUBJECT
+  });
 }
 
 function setFlipState(nextFlipped) {
@@ -99,7 +153,12 @@ function updateProgress() {
   if (filteredCards.length === 0) {
     cardInfo.textContent = "0 / 0";
     progressFill.style.width = "0%";
-    progressText.textContent = studyMode === "review" ? "복습 필요 카드가 없습니다" : "표시할 카드가 없습니다";
+    progressText.textContent =
+      studyMode === "review"
+        ? "복습 필요 카드가 없습니다"
+        : studyMode === "unmarked"
+          ? "안 본 카드가 없습니다"
+          : "표시할 카드가 없습니다";
     return;
   }
 
@@ -111,27 +170,54 @@ function updateProgress() {
 
 function updateStudyStats() {
   const learning = getLearningMap();
+  const selectedSubject = subjectFilter.value || DEFAULT_SUBJECT;
+  const scopedCards =
+    selectedSubject === DEFAULT_SUBJECT
+      ? allCards
+      : allCards.filter(card => card.subject === selectedSubject);
+
   let reviewTotal = 0;
+  let unmarkedTotal = 0;
   let knownTotal = 0;
 
-  allCards.forEach(card => {
+  scopedCards.forEach(card => {
     const status = learning[getCardKey(card)];
     if (status === CARD_STATUS.review) {
       reviewTotal += 1;
     } else if (status === CARD_STATUS.known) {
       knownTotal += 1;
+    } else {
+      unmarkedTotal += 1;
     }
   });
 
   reviewCount.textContent = String(reviewTotal);
+  unmarkedCount.textContent = String(unmarkedTotal);
   knownCount.textContent = String(knownTotal);
-  studyModeText.textContent = studyMode === "review" ? "복습 필요 카드만 보는 중" : "전체 카드 학습 중";
+
+  const subjectLabel = selectedSubject === DEFAULT_SUBJECT ? "전체 과목" : `${selectedSubject} 과목`;
+  const totalCount = scopedCards.length;
+  const completionRate = totalCount > 0 ? Math.round((knownTotal / totalCount) * 100) : 0;
+  const reviewRate = totalCount > 0 ? Math.round((reviewTotal / totalCount) * 100) : 0;
+  const todayViewed = new Set((getSavedState().viewed || {})[getTodayStamp()] || []);
+  const todayCount = scopedCards.filter(card => todayViewed.has(getCardKey(card))).length;
+
+  studyModeText.textContent =
+    studyMode === "review"
+      ? `${subjectLabel} 복습 필요 카드만 보는 중`
+      : studyMode === "unmarked"
+        ? `${subjectLabel} 안 본 카드만 보는 중`
+        : `${subjectLabel} 학습 중`;
+  studySummaryText.textContent = `완료율 ${completionRate}% · 복습 ${reviewRate}% · 오늘 ${todayCount}장`;
 }
 
 function updateActionButtons() {
   if (filteredCards.length === 0) {
     reviewBtn.disabled = true;
     knownBtn.disabled = true;
+    resetBtn.disabled = true;
+    cardStatusBadge.textContent = "미분류";
+    cardStatusBadge.classList.remove("is-review", "is-known");
     return;
   }
 
@@ -140,10 +226,22 @@ function updateActionButtons() {
 
   reviewBtn.disabled = false;
   knownBtn.disabled = false;
-  reviewBtn.textContent = status === CARD_STATUS.review ? "복습 필요 표시됨" : "복습 필요";
-  knownBtn.textContent = status === CARD_STATUS.known ? "학습 완료 표시됨" : "학습 완료";
+  resetBtn.disabled = false;
+  reviewBtn.textContent = status === CARD_STATUS.review ? "복습하기 등록됨" : "복습하기 등록";
+  knownBtn.textContent = status === CARD_STATUS.known ? "학습완료 처리됨" : "학습완료 처리";
   reviewBtn.setAttribute("aria-pressed", String(status === CARD_STATUS.review));
   knownBtn.setAttribute("aria-pressed", String(status === CARD_STATUS.known));
+  cardStatusBadge.classList.remove("is-review", "is-known");
+
+  if (status === CARD_STATUS.review) {
+    cardStatusBadge.textContent = "복습 필요";
+    cardStatusBadge.classList.add("is-review");
+  } else if (status === CARD_STATUS.known) {
+    cardStatusBadge.textContent = "학습 완료";
+    cardStatusBadge.classList.add("is-known");
+  } else {
+    cardStatusBadge.textContent = "미분류";
+  }
 }
 
 function applyTextDensity(element, text) {
@@ -164,37 +262,50 @@ function applyTextDensity(element, text) {
 
 function getCardsForCurrentMode(selectedSubject = subjectFilter.value) {
   const baseCards =
-    selectedSubject === "전체"
+    selectedSubject === DEFAULT_SUBJECT
       ? [...allCards]
       : allCards.filter(card => card.subject === selectedSubject);
 
-  if (studyMode !== "review") {
+  if (studyMode === "all") {
     return baseCards;
   }
 
   const learning = getLearningMap();
-  return baseCards.filter(card => learning[getCardKey(card)] === CARD_STATUS.review);
+  if (studyMode === "review") {
+    return baseCards.filter(card => learning[getCardKey(card)] === CARD_STATUS.review);
+  }
+
+  if (studyMode === "unmarked") {
+    return baseCards.filter(card => !learning[getCardKey(card)]);
+  }
+
+  return baseCards;
 }
 
 async function loadCardManifest() {
-  const response = await fetch(CARD_MANIFEST_PATH);
+  const manifestUrl = new URL(CARD_MANIFEST_PATH, window.location.href);
+  const response = await fetch(manifestUrl);
   if (!response.ok) {
-    throw new Error("카드 목록 파일을 불러오지 못했습니다");
+    throw new Error("카드 목록 파일을 불러오지 못했습니다.");
   }
 
   const manifest = await response.json();
-  return Array.isArray(manifest.files) ? manifest.files : [];
+  if (!Array.isArray(manifest.files)) {
+    return [];
+  }
+
+  return manifest.files.map(filePath => new URL(filePath, manifestUrl).href);
 }
 
 async function loadCardFile(filePath) {
   const response = await fetch(filePath);
   if (!response.ok) {
-    throw new Error(`${filePath} 파일을 불러오지 못했습니다`);
+    throw new Error(`${filePath} 파일을 불러오지 못했습니다.`);
   }
 
   const cards = await response.json();
   if (!Array.isArray(cards)) {
-    throw new Error(`${filePath} 파일 형식이 올바르지 않습니다`);
+    throw new Error(`${filePath} 파일 형식이 올바르지 않습니다.`);
   }
 
   return cards;
@@ -210,7 +321,7 @@ async function loadCards() {
     restoreState();
   } catch (error) {
     frontSubject.textContent = "오류";
-    frontText.textContent = "카드 데이터를 불러오지 못했습니다";
+    frontText.textContent = "카드 데이터를 불러오지 못했습니다.";
     backText.textContent = error.message;
     updateProgress();
     console.error(error);
@@ -224,7 +335,7 @@ function setupSubjects() {
   }, {});
   const subjects = Object.keys(subjectCounts);
 
-  subjectFilter.innerHTML = `<option value="전체">전체 (${allCards.length})</option>`;
+  subjectFilter.innerHTML = `<option value="${DEFAULT_SUBJECT}">${DEFAULT_SUBJECT} (${allCards.length})</option>`;
   subjects.forEach(subject => {
     const option = document.createElement("option");
     option.value = subject;
@@ -233,21 +344,28 @@ function setupSubjects() {
   });
 }
 
+function renderEmptyCard() {
+  frontSubject.textContent = "과목";
+  frontText.textContent = allCards.length === 0 ? "아직 등록된 카드가 없습니다" : "해당 카드가 없습니다";
+  backText.textContent =
+    allCards.length === 0
+      ? "과목별 JSON 파일에 카드를 추가해보세요"
+      : studyMode === "review"
+        ? "복습 필요로 표시된 카드가 없습니다"
+        : studyMode === "unmarked"
+          ? "안 본 상태의 카드가 없습니다"
+          : "필터를 변경해보세요";
+  applyTextDensity(frontText, frontText.textContent);
+  applyTextDensity(backText, backText.textContent);
+  setFlipState(false);
+  updateProgress();
+  updateStudyStats();
+  updateActionButtons();
+}
+
 function renderCard() {
   if (filteredCards.length === 0) {
-    frontSubject.textContent = "과목";
-    frontText.textContent = allCards.length === 0 ? "아직 등록된 카드가 없습니다" : "해당 카드가 없습니다";
-    backText.textContent =
-      allCards.length === 0
-        ? "과목별 JSON 파일에 카드를 추가해보세요"
-        : studyMode === "review"
-          ? "복습 필요로 표시한 카드가 없습니다"
-          : "필터를 변경해보세요";
-    applyTextDensity(frontText, frontText.textContent);
-    applyTextDensity(backText, backText.textContent);
-    setFlipState(false);
-    updateProgress();
-    updateActionButtons();
+    renderEmptyCard();
     return;
   }
 
@@ -255,9 +373,11 @@ function renderCard() {
   frontSubject.textContent = card.subject;
   frontText.textContent = card.question;
   backText.textContent = card.answer;
+  recordViewedCard(card);
   applyTextDensity(frontText, card.question);
   applyTextDensity(backText, card.answer);
   updateProgress();
+  updateStudyStats();
   updateActionButtons();
   saveState();
 }
@@ -277,7 +397,7 @@ function prevCard() {
 }
 
 function shuffleCards() {
-  for (let i = filteredCards.length - 1; i > 0; i--) {
+  for (let i = filteredCards.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
     [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
   }
@@ -296,11 +416,15 @@ function filterCards() {
 
 function restoreState() {
   const savedState = getSavedState();
-  const savedSubject = savedState.subject || "전체";
-  studyMode = savedState.studyMode === "review" ? "review" : "all";
+  const savedSubject = savedState.subject || DEFAULT_SUBJECT;
   const hasSavedSubject = [...subjectFilter.options].some(option => option.value === savedSubject);
 
-  subjectFilter.value = hasSavedSubject ? savedSubject : "전체";
+  studyMode = savedState.studyMode === "review" ? "review" : "all";
+  if (savedState.studyMode === "unmarked") {
+    studyMode = "unmarked";
+  }
+
+  subjectFilter.value = hasSavedSubject ? savedSubject : DEFAULT_SUBJECT;
   setModeButtons();
   filteredCards = getCardsForCurrentMode(subjectFilter.value);
 
@@ -318,8 +442,9 @@ function restoreState() {
 
 function setModeButtons() {
   modeSwitch.querySelectorAll(".mode-btn").forEach(button => {
-    button.classList.toggle("is-active", button.dataset.mode === studyMode);
-    button.setAttribute("aria-pressed", String(button.dataset.mode === studyMode));
+    const isActive = button.dataset.mode === studyMode;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
 }
 
@@ -334,12 +459,44 @@ function markCurrentCard(status) {
   if (filteredCards.length === 0) return;
 
   const currentCard = filteredCards[currentIndex];
+  const currentKey = getCardKey(currentCard);
   saveLearningStatus(currentCard, status);
   updateStudyStats();
 
-  if (studyMode === "review") {
+  if (studyMode === "review" || studyMode === "unmarked") {
     filteredCards = getCardsForCurrentMode(subjectFilter.value);
 
+    if (filteredCards.length === 0) {
+      currentIndex = 0;
+      renderCard();
+      return;
+    }
+
+    const nextIndex = filteredCards.findIndex(card => getCardKey(card) === currentKey);
+    currentIndex = nextIndex >= 0 ? nextIndex : Math.min(currentIndex, filteredCards.length - 1);
+    setFlipState(false);
+    renderCard();
+    return;
+  }
+
+  if (filteredCards.length > 1) {
+    nextCard();
+    return;
+  }
+
+  setFlipState(false);
+  renderCard();
+}
+
+function resetCurrentCardStatus() {
+  if (filteredCards.length === 0) return;
+
+  const currentCard = filteredCards[currentIndex];
+  clearLearningStatus(currentCard);
+  updateStudyStats();
+
+  if (studyMode === "review" || studyMode === "unmarked") {
+    filteredCards = getCardsForCurrentMode(subjectFilter.value);
     if (filteredCards.length === 0) {
       currentIndex = 0;
       renderCard();
@@ -350,6 +507,21 @@ function markCurrentCard(status) {
     currentIndex = nextIndex >= 0 ? nextIndex : Math.min(currentIndex, filteredCards.length - 1);
   }
 
+  renderCard();
+}
+
+function resetAllStudyState() {
+  const confirmed = window.confirm("복습 기록과 학습 위치를 모두 초기화할까요?");
+  if (!confirmed) return;
+
+  clearAllLearningState();
+  studyMode = "all";
+  subjectFilter.value = DEFAULT_SUBJECT;
+  currentIndex = 0;
+  setModeButtons();
+  filteredCards = getCardsForCurrentMode(DEFAULT_SUBJECT);
+  setFlipState(false);
+  updateStudyStats();
   renderCard();
 }
 
@@ -384,7 +556,6 @@ function handleTouchEnd(event) {
   }
 
   suppressClick = true;
-
   if (diffX < 0) {
     nextCard();
   } else {
@@ -413,6 +584,8 @@ modeSwitch.addEventListener("click", event => {
 });
 reviewBtn.addEventListener("click", () => markCurrentCard(CARD_STATUS.review));
 knownBtn.addEventListener("click", () => markCurrentCard(CARD_STATUS.known));
+resetBtn.addEventListener("click", resetCurrentCardStatus);
+resetAllBtn.addEventListener("click", resetAllStudyState);
 flashCard.addEventListener("click", handleCardClick);
 flashCard.addEventListener("keydown", handleKeydown);
 flashCard.addEventListener("touchstart", handleTouchStart, { passive: true });
