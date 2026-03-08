@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 192 192"><path fill="#e08524" d="M75.3 73.4H18.4l45.3 34.3L48.3 163l46.1-32.3 48.2 34.6-16.9-58.3 44.9-33.6H115l-20.5-55-19.2 55z"/><path d="m96.7 18.8 18.2 8.2 16.5 44.3h-15.1L96.7 18.8zm-47 146 18.7 9.9 42.6-29.9-16.5-11.4-44.8 31.4zm79.1-56.8 17.4 9.4 18.6 60.1-19.7-11.3-16.3-58.2z"/><path d="m173.1 74.3 17.8 9.2-44.7 34-17.4-9.4 44.3-33.8z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="정보처리기사 카드퀴즈 아이콘">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98" />
+      <stop offset="100%" stop-color="#dbeafe" stop-opacity="0.92" />
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="44" fill="url(#bg)" />
+  <circle cx="144" cy="48" r="28" fill="#ffffff" fill-opacity="0.14" />
+  <circle cx="44" cy="150" r="34" fill="#ffffff" fill-opacity="0.08" />
+  <g transform="translate(34 28)">
+    <rect x="16" y="24" width="104" height="116" rx="22" fill="#0f172a" fill-opacity="0.16" />
+    <rect x="0" y="0" width="112" height="128" rx="24" fill="url(#card)" />
+    <rect x="18" y="22" width="76" height="12" rx="6" fill="#93c5fd" />
+    <rect x="18" y="46" width="56" height="10" rx="5" fill="#cbd5e1" />
+    <rect x="18" y="64" width="76" height="10" rx="5" fill="#cbd5e1" />
+    <rect x="18" y="82" width="44" height="10" rx="5" fill="#cbd5e1" />
+    <rect x="18" y="100" width="50" height="10" rx="5" fill="#bfdbfe" />
+    <path d="M90 69c0-11.05 8.95-20 20-20s20 8.95 20 20-8.95 20-20 20c-3.56 0-6.9-.93-9.79-2.56L90 114z" fill="#2563eb" />
+    <path d="M108 59.5v11.1" stroke="#ffffff" stroke-linecap="round" stroke-width="7" />
+    <path d="M102.45 65.05h11.1" stroke="#ffffff" stroke-linecap="round" stroke-width="7" />
+  </g>
+</svg>

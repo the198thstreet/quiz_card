@@ -1,0 +1,437 @@
+[
+  {
+    "subject": "SW설계",
+    "question": "디자인 패턴의 생성 패턴에 속하는 예시는?",
+    "answer": "싱글톤, 팩토리 메서드, 빌더, 프로토타입, 추상 팩토리"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Singleton 패턴의 핵심은?",
+    "answer": "객체(클래스, 인스턴스)를 하나만 생성하고 어디서든 참조"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Factory Method 패턴의 핵심은?",
+    "answer": "상위 클래스나 인터페이스는 생성 규약을 정의하고, 서브 클래스가 실제 생성을 담당"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Builder 패턴의 핵심은?",
+    "answer": "복잡한 객체를 단계적으로 생성"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Prototype 패턴의 핵심은?",
+    "answer": "기존 객체를 복제하여 생성"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Abstract Factory 패턴의 핵심은?",
+    "answer": "관련 제품군을 생성하는 인터페이스 제공"
+  },
+  {
+    "subject": "SW설계",
+    "question": "구조 패턴에 속하는 예시는?",
+    "answer": "어댑터, 데코레이터, 퍼사드, 프록시, 브리지, 플라이웨이트, 컴포지트"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Adapter 패턴의 핵심은?",
+    "answer": "서로 다른 인터페이스를 연결"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Decorator 패턴의 핵심은?",
+    "answer": "기존 클래스를 수정하지 않고 기능 확장"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Facade 패턴의 핵심은?",
+    "answer": "단순한 인터페이스 제공"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Proxy 패턴의 핵심은?",
+    "answer": "대리 객체 사용"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Bridge 패턴의 핵심은?",
+    "answer": "구현과 추상을 분리"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Flyweight 패턴의 핵심은?",
+    "answer": "객체 공유로 메모리 절약"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Composite 패턴의 핵심은?",
+    "answer": "부분-전체 계층 구조"
+  },
+  {
+    "subject": "SW설계",
+    "question": "행위 패턴에 속하는 예시는?",
+    "answer": "전략, 중재자, 반복자, 상태, 커맨드, 책임 연쇄, 템플릿 메서드"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Strategy 패턴의 핵심은?",
+    "answer": "알고리즘 캡슐화"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Mediator 패턴의 핵심은?",
+    "answer": "객체 간 상호작용 관리"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Iterator 패턴의 핵심은?",
+    "answer": "컬렉션 순회"
+  },
+  {
+    "subject": "SW설계",
+    "question": "State 패턴의 핵심은?",
+    "answer": "상태에 따라 행위 변경"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Command 패턴의 핵심은?",
+    "answer": "요청을 객체로 캡슐화"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Chain of Responsibility 패턴의 핵심은?",
+    "answer": "요청을 처리할 객체 체인에 전달"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Template Method 패턴의 핵심은?",
+    "answer": "알고리즘의 골격 정의"
+  },
+  {
+    "subject": "SW설계",
+    "question": "응집도란?",
+    "answer": "모듈 내부 요소들이 얼마나 밀접하게 관련되어 있는지"
+  },
+  {
+    "subject": "SW설계",
+    "question": "결합도란?",
+    "answer": "모듈과 모듈 간의 상호 의존 정도"
+  },
+  {
+    "subject": "SW설계",
+    "question": "기능적 응집도의 핵심은?",
+    "answer": "모든 기능이 단일 목적을 위해 수행"
+  },
+  {
+    "subject": "SW설계",
+    "question": "순차적 응집도의 핵심은?",
+    "answer": "이전 출력이 다음 입력이 됨"
+  },
+  {
+    "subject": "SW설계",
+    "question": "통신적 응집도의 핵심은?",
+    "answer": "동일한 입력 데이터 사용"
+  },
+  {
+    "subject": "SW설계",
+    "question": "절차적 응집도의 핵심은?",
+    "answer": "연관된 작업을 순서대로 수행"
+  },
+  {
+    "subject": "SW설계",
+    "question": "시간적 응집도의 핵심은?",
+    "answer": "특정 시점에 수행되는 기능 묶음"
+  },
+  {
+    "subject": "SW설계",
+    "question": "논리적 응집도의 핵심은?",
+    "answer": "유사 기능을 묶음"
+  },
+  {
+    "subject": "SW설계",
+    "question": "우연적 응집도의 핵심은?",
+    "answer": "관련 없는 기능을 묶음"
+  },
+  {
+    "subject": "SW설계",
+    "question": "내용 결합도의 핵심은?",
+    "answer": "다른 모듈의 내부에 직접 접근"
+  },
+  {
+    "subject": "SW설계",
+    "question": "공통 결합도의 핵심은?",
+    "answer": "전역 변수 공유"
+  },
+  {
+    "subject": "SW설계",
+    "question": "외부 결합도의 핵심은?",
+    "answer": "외부 데이터 형식에 의존"
+  },
+  {
+    "subject": "SW설계",
+    "question": "제어 결합도의 핵심은?",
+    "answer": "제어 신호 전달"
+  },
+  {
+    "subject": "SW설계",
+    "question": "스탬프 결합도의 핵심은?",
+    "answer": "구조체 전달"
+  },
+  {
+    "subject": "SW설계",
+    "question": "자료 결합도의 핵심은?",
+    "answer": "데이터만 전달"
+  },
+  {
+    "subject": "SW설계",
+    "question": "SOLID란?",
+    "answer": "소프트웨어의 유지보수성과 확장성을 높이기 위한 객체 지향 설계 원칙"
+  },
+  {
+    "subject": "SW설계",
+    "question": "SRP의 전체 명칭은?",
+    "answer": "Single Responsibility Principle"
+  },
+  {
+    "subject": "SW설계",
+    "question": "SRP의 핵심은?",
+    "answer": "하나의 클래스는 하나의 책임만 가진다"
+  },
+  {
+    "subject": "SW설계",
+    "question": "OCP의 전체 명칭은?",
+    "answer": "Open Closed Principle"
+  },
+  {
+    "subject": "SW설계",
+    "question": "OCP의 핵심은?",
+    "answer": "확장에는 열려 있고 변경에는 닫혀 있음"
+  },
+  {
+    "subject": "SW설계",
+    "question": "LSP의 전체 명칭은?",
+    "answer": "Liskov Substitution Principle"
+  },
+  {
+    "subject": "SW설계",
+    "question": "LSP의 핵심은?",
+    "answer": "서브타입은 기반 타입으로 대체 가능"
+  },
+  {
+    "subject": "SW설계",
+    "question": "ISP의 전체 명칭은?",
+    "answer": "Interface Segregation Principle"
+  },
+  {
+    "subject": "SW설계",
+    "question": "ISP의 핵심은?",
+    "answer": "사용하지 않는 메소드에 의존하지 않음"
+  },
+  {
+    "subject": "SW설계",
+    "question": "DIP의 전체 명칭은?",
+    "answer": "Dependency Inversion Principle"
+  },
+  {
+    "subject": "SW설계",
+    "question": "DIP의 핵심은?",
+    "answer": "고수준 모듈은 저수준 모듈에 직접 의존하지 않음"
+  },
+  {
+    "subject": "SW설계",
+    "question": "OMT란?",
+    "answer": "Object Modeling Technique"
+  },
+  {
+    "subject": "SW설계",
+    "question": "객체(정보) 모델링의 영어 표현은?",
+    "answer": "Object(Information) Modeling"
+  },
+  {
+    "subject": "SW설계",
+    "question": "객체(정보) 모델링의 핵심은?",
+    "answer": "객체/ER 다이어그램, 객체 간 관계"
+  },
+  {
+    "subject": "SW설계",
+    "question": "동적 모델링의 영어 표현은?",
+    "answer": "Dynamic Modeling"
+  },
+  {
+    "subject": "SW설계",
+    "question": "동적 모델링의 핵심은?",
+    "answer": "상태 다이어그램, 시간 제어 흐름"
+  },
+  {
+    "subject": "SW설계",
+    "question": "기능 모델링의 영어 표현은?",
+    "answer": "Functional Modeling"
+  },
+  {
+    "subject": "SW설계",
+    "question": "기능 모델링의 핵심은?",
+    "answer": "자료 흐름도(DFD), 자료 흐름"
+  },
+  {
+    "subject": "SW설계",
+    "question": "UML의 정적 다이어그램 종류는?",
+    "answer": "클래스, 객체, 컴포넌트, 배치, 복합체, 패키지 다이어그램"
+  },
+  {
+    "subject": "SW설계",
+    "question": "UML의 동적 다이어그램 종류는?",
+    "answer": "유스케이스, 시퀀스, 커뮤니케이션, 상태, 활동, 타이밍 다이어그램"
+  },
+  {
+    "subject": "SW설계",
+    "question": "클래스 다이어그램의 핵심은?",
+    "answer": "속성과 메서드를 포함하며 클래스 간 관계를 표현"
+  },
+  {
+    "subject": "SW설계",
+    "question": "객체 다이어그램의 핵심은?",
+    "answer": "객체 모델링, 인스턴스 표현"
+  },
+  {
+    "subject": "SW설계",
+    "question": "컴포넌트 다이어그램의 핵심은?",
+    "answer": "구현 단위의 인터페이스와 의존 관계 표현"
+  },
+  {
+    "subject": "SW설계",
+    "question": "배치 다이어그램의 핵심은?",
+    "answer": "물리적 위치 표현"
+  },
+  {
+    "subject": "SW설계",
+    "question": "복합체 다이어그램의 핵심은?",
+    "answer": "내부 구조 표현"
+  },
+  {
+    "subject": "SW설계",
+    "question": "패키지 다이어그램의 핵심은?",
+    "answer": "폴더 모양, 유스케이스 요소 그룹화"
+  },
+  {
+    "subject": "SW설계",
+    "question": "유스케이스 다이어그램의 핵심은?",
+    "answer": "사용자 관점 표현"
+  },
+  {
+    "subject": "SW설계",
+    "question": "시퀀스 다이어그램의 핵심은?",
+    "answer": "객체 메시지 흐름 표현"
+  },
+  {
+    "subject": "SW설계",
+    "question": "커뮤니케이션 다이어그램의 핵심은?",
+    "answer": "객체 메시지 연결 관계 표현"
+  },
+  {
+    "subject": "SW설계",
+    "question": "상태 다이어그램의 핵심은?",
+    "answer": "객체 상태 변화와 상태 전이를 표현"
+  },
+  {
+    "subject": "SW설계",
+    "question": "활동 다이어그램의 핵심은?",
+    "answer": "어떤 기능 수행 흐름 표현"
+  },
+  {
+    "subject": "SW설계",
+    "question": "타이밍 다이어그램의 핵심은?",
+    "answer": "시간 기반 메시지 흐름 표현"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Composition의 한국어는?",
+    "answer": "포함"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Composition의 모양은?",
+    "answer": "강한 마름모"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Composition의 핵심 키워드는?",
+    "answer": "영구적"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Aggregation의 한국어는?",
+    "answer": "집합"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Aggregation의 모양은?",
+    "answer": "약한 마름모"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Aggregation의 핵심 키워드는?",
+    "answer": "포함되어 있는 관계"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Association의 한국어는?",
+    "answer": "연관"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Association의 모양은?",
+    "answer": "강한 화살표, 실선"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Association의 핵심 키워드는?",
+    "answer": "서로 관련(연결)"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Dependency의 한국어는?",
+    "answer": "의존"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Dependency의 모양은?",
+    "answer": "약한 화살표, 점선"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Dependency의 핵심 키워드는?",
+    "answer": "짧은 시간 동안 의존 관계"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Generalization의 한국어는?",
+    "answer": "일반화"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Generalization의 모양은?",
+    "answer": "강한 속 빈 화살표, 실선"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Generalization의 핵심 키워드는?",
+    "answer": "일반적인/구체적인 관계"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Realization의 한국어는?",
+    "answer": "실체화"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Realization의 모양은?",
+    "answer": "약한 속 빈 화살표, 점선"
+  },
+  {
+    "subject": "SW설계",
+    "question": "Realization의 핵심 키워드는?",
+    "answer": "인터페이스 구현 관계"
+  }
+]

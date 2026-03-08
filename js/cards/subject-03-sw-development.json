@@ -1,0 +1,407 @@
+[
+  {
+    "subject": "SW개발",
+    "question": "화이트박스 테스트 커버리지의 난이도 순서는?",
+    "answer": "구문 < 결정 < 조건 < 조건/결정 < MC/DC"
+  },
+  {
+    "subject": "SW개발",
+    "question": "구문(문장) 커버리지의 영어 표현은?",
+    "answer": "Statement"
+  },
+  {
+    "subject": "SW개발",
+    "question": "구문(문장) 커버리지의 핵심은?",
+    "answer": "모든 명령문, 모든 문장 수행"
+  },
+  {
+    "subject": "SW개발",
+    "question": "결정(분기) 커버리지의 영어 표현은?",
+    "answer": "Decision 또는 Branch"
+  },
+  {
+    "subject": "SW개발",
+    "question": "결정(분기) 커버리지의 핵심은?",
+    "answer": "모든 조건, 결정문 수행"
+  },
+  {
+    "subject": "SW개발",
+    "question": "조건 커버리지의 영어 표현은?",
+    "answer": "Condition"
+  },
+  {
+    "subject": "SW개발",
+    "question": "조건 커버리지의 핵심은?",
+    "answer": "결정문 내 개별 조건식"
+  },
+  {
+    "subject": "SW개발",
+    "question": "조건/결정 커버리지의 영어 표현은?",
+    "answer": "Condition/Decision"
+  },
+  {
+    "subject": "SW개발",
+    "question": "조건/결정 커버리지의 핵심은?",
+    "answer": "조건과 결정을 모두 만족"
+  },
+  {
+    "subject": "SW개발",
+    "question": "MC/DC의 전체 명칭은?",
+    "answer": "Modified Condition/Decision"
+  },
+  {
+    "subject": "SW개발",
+    "question": "MC/DC의 핵심은?",
+    "answer": "개별 조건식의 독립적 영향"
+  },
+  {
+    "subject": "SW개발",
+    "question": "동등 분할 테스트의 영어 표현은?",
+    "answer": "Equivalence Partitioning"
+  },
+  {
+    "subject": "SW개발",
+    "question": "동등 분할 테스트의 핵심은?",
+    "answer": "입력 데이터를 유효값/무효값 그룹으로 분할"
+  },
+  {
+    "subject": "SW개발",
+    "question": "경계값 분석의 영어 표현은?",
+    "answer": "Boundary Value Analysis"
+  },
+  {
+    "subject": "SW개발",
+    "question": "경계값 분석의 핵심은?",
+    "answer": "등가 분할 후 경계값을 포함해 테스트 설계"
+  },
+  {
+    "subject": "SW개발",
+    "question": "결정 테이블 테스트의 핵심은?",
+    "answer": "논리적 조건과 그에 따른 행동을 표로 정의"
+  },
+  {
+    "subject": "SW개발",
+    "question": "원인-결과 그래프 테스트의 핵심은?",
+    "answer": "입력(원인)과 결과(출력) 관계 정의"
+  },
+  {
+    "subject": "SW개발",
+    "question": "상태 전이 테스트의 핵심은?",
+    "answer": "상태 변화 기반 테스트 설계"
+  },
+  {
+    "subject": "SW개발",
+    "question": "오류 예측 테스트의 핵심은?",
+    "answer": "테스터 경험 기반 오류 추정"
+  },
+  {
+    "subject": "SW개발",
+    "question": "비교 테스트의 핵심은?",
+    "answer": "여러 버전 또는 제품 비교"
+  },
+  {
+    "subject": "SW개발",
+    "question": "페어와이즈 테스트의 핵심은?",
+    "answer": "모든 조합 대신 최소 테스트 케이스 조합 생성"
+  },
+  {
+    "subject": "SW개발",
+    "question": "분류 트리 테스트의 핵심은?",
+    "answer": "테스트 관련 요소를 트리 구조로 분류"
+  },
+  {
+    "subject": "SW개발",
+    "question": "유스케이스 테스트의 핵심은?",
+    "answer": "사용자 시나리오(유스케이스) 기반 테스트"
+  },
+  {
+    "subject": "SW개발",
+    "question": "상향식 테스트란?",
+    "answer": "최하위 모듈부터 위쪽 방향으로 테스트 및 통합 수행"
+  },
+  {
+    "subject": "SW개발",
+    "question": "하향식 테스트란?",
+    "answer": "최상위(제어) 모듈부터 아래 방향으로 테스트 및 통합 수행"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 하네스의 영어 표현은?",
+    "answer": "Test Harness"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 하네스의 핵심은?",
+    "answer": "소프트웨어 드라이버, 스텁, 테스트 환경 구축"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 드라이버의 영어 표현은?",
+    "answer": "Test Driver"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 드라이버의 핵심은?",
+    "answer": "상향식 테스트에서 하위 모듈 테스트를 위해 상위 모듈 역할 수행"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 스텁의 영어 표현은?",
+    "answer": "Test Stub"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 스텁의 핵심은?",
+    "answer": "하향식 테스트에서 임시 하위 모듈 역할 수행"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 케이스의 영어 표현은?",
+    "answer": "Test Case"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 케이스의 핵심은?",
+    "answer": "테스트 최소 단위"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 슈트의 영어 표현은?",
+    "answer": "Test Suite"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 슈트의 핵심은?",
+    "answer": "테스트 케이스 집합"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 스크립트의 영어 표현은?",
+    "answer": "Test Script"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 스크립트의 핵심은?",
+    "answer": "테스트 케이스를 코드화한 자동화 산출물"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 시나리오의 영어 표현은?",
+    "answer": "Test Scenario"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 시나리오의 핵심은?",
+    "answer": "동작 흐름, 스토리, 여러 케이스 묶음"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 케이스 구성 요소 5가지는?",
+    "answer": "식별자 ID, 테스트 항목, 테스트 조건, 테스트 데이터, 예상 결과"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 케이스의 식별자 ID란?",
+    "answer": "테스트 케이스를 고유하게 식별하는 번호"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 항목이란?",
+    "answer": "테스트 대상 기능 또는 모듈"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 조건이란?",
+    "answer": "테스트 실행 전 갖춰야 할 사전 조건 및 환경"
+  },
+  {
+    "subject": "SW개발",
+    "question": "테스트 데이터란?",
+    "answer": "테스트 수행 시 사용할 입력값"
+  },
+  {
+    "subject": "SW개발",
+    "question": "예상 결과란?",
+    "answer": "테스트 수행 후 기대되는 출력 또는 시스템 상태"
+  },
+  {
+    "subject": "SW개발",
+    "question": "예시 테스트 케이스 PID_001의 테스트 항목은?",
+    "answer": "결제 화면"
+  },
+  {
+    "subject": "SW개발",
+    "question": "예시 테스트 케이스 PID_001의 테스트 조건은?",
+    "answer": "결제 금액 5000원 결제"
+  },
+  {
+    "subject": "SW개발",
+    "question": "예시 테스트 케이스 PID_001의 예상 결과는?",
+    "answer": "결제 성공 메시지"
+  },
+  {
+    "subject": "SW개발",
+    "question": "단위 테스트의 핵심은?",
+    "answer": "개별 모듈, 서브루틴, 컴포넌트가 정상 실행되는지 확인"
+  },
+  {
+    "subject": "SW개발",
+    "question": "통합 테스트의 핵심은?",
+    "answer": "인터페이스 간 시스템이 정상 실행되는지 확인"
+  },
+  {
+    "subject": "SW개발",
+    "question": "시스템 테스트의 핵심은?",
+    "answer": "통합된 전체 시스템이 요구사항 명세에 맞게 동작하는지 검증"
+  },
+  {
+    "subject": "SW개발",
+    "question": "인수 테스트의 핵심은?",
+    "answer": "사용자 관점에서 요구사항 충족 여부 확인"
+  },
+  {
+    "subject": "SW개발",
+    "question": "알파 테스트란?",
+    "answer": "개발자 환경에서 통제된 상태로 수행하는 인수 테스트"
+  },
+  {
+    "subject": "SW개발",
+    "question": "베타 테스트란?",
+    "answer": "개발자 없이 수행하는 인수 테스트"
+  },
+  {
+    "subject": "SW개발",
+    "question": "V-모델의 왼쪽 설계 흐름은?",
+    "answer": "요구사항 검증 → 시스템 설계 → 모듈 설계"
+  },
+  {
+    "subject": "SW개발",
+    "question": "V-모델의 오른쪽 테스트 흐름은?",
+    "answer": "단위 테스트 → 통합 테스트 → 시스템 테스트 → 인수 테스트"
+  },
+  {
+    "subject": "SW개발",
+    "question": "PPTP의 동작 계층은?",
+    "answer": "데이터 링크 계층"
+  },
+  {
+    "subject": "SW개발",
+    "question": "PPTP의 핵심은?",
+    "answer": "PPP 기초"
+  },
+  {
+    "subject": "SW개발",
+    "question": "L2F의 동작 계층은?",
+    "answer": "데이터 링크 계층"
+  },
+  {
+    "subject": "SW개발",
+    "question": "L2F의 핵심은?",
+    "answer": "시스코 개발, UDP 사용"
+  },
+  {
+    "subject": "SW개발",
+    "question": "L2TP의 동작 계층은?",
+    "answer": "데이터 링크 계층"
+  },
+  {
+    "subject": "SW개발",
+    "question": "L2TP의 핵심은?",
+    "answer": "L2F + PPTP, VPN에서 사용, 터널링"
+  },
+  {
+    "subject": "SW개발",
+    "question": "IPSec의 동작 계층은?",
+    "answer": "네트워크 계층"
+  },
+  {
+    "subject": "SW개발",
+    "question": "IPSec의 핵심은?",
+    "answer": "IP 패킷 단위 암호화, 강력한 보안 제공"
+  },
+  {
+    "subject": "SW개발",
+    "question": "SSL/TLS의 동작 계층은?",
+    "answer": "전송 계층"
+  },
+  {
+    "subject": "SW개발",
+    "question": "SSL/TLS의 핵심은?",
+    "answer": "웹 통신 암호화 표준, HTTPS의 기반"
+  },
+  {
+    "subject": "SW개발",
+    "question": "S-HTTP의 동작 계층은?",
+    "answer": "응용 계층"
+  },
+  {
+    "subject": "SW개발",
+    "question": "S-HTTP의 핵심은?",
+    "answer": "클라이언트-서버 간 메시지 단위 암호화"
+  },
+  {
+    "subject": "SW개발",
+    "question": "HTTPS의 동작 계층은?",
+    "answer": "응용 계층"
+  },
+  {
+    "subject": "SW개발",
+    "question": "HTTPS의 핵심은?",
+    "answer": "통신 채널 전체 암호화"
+  },
+  {
+    "subject": "SW개발",
+    "question": "AJAX의 핵심은?",
+    "answer": "일부 콘텐츠만 리로드, HTML만으로 어려운 작업 구현"
+  },
+  {
+    "subject": "SW개발",
+    "question": "Fetch API의 핵심은?",
+    "answer": "Promise 기반, 비동기 코드 쉽게 관리, 브라우저 내장 API"
+  },
+  {
+    "subject": "SW개발",
+    "question": "웹소켓의 핵심은?",
+    "answer": "양방향 실시간 통신, 서버 푸시 가능, 연결 유지"
+  },
+  {
+    "subject": "SW개발",
+    "question": "GraphQL의 핵심은?",
+    "answer": "API를 위한 쿼리 언어, 불필요한 데이터 전송 없음"
+  },
+  {
+    "subject": "SW개발",
+    "question": "JSON의 핵심은?",
+    "answer": "사람이 읽기 쉬움, key-value 쌍, 주석 불가능"
+  },
+  {
+    "subject": "SW개발",
+    "question": "XML의 핵심은?",
+    "answer": "태그(< >) 사용, 마크업 언어, 뛰어난 확장성"
+  },
+  {
+    "subject": "SW개발",
+    "question": "YAML의 핵심은?",
+    "answer": "사람이 읽고 쓰기 편함, 들여쓰기 사용, 주석 가능"
+  },
+  {
+    "subject": "SW개발",
+    "question": "UDDI의 핵심은?",
+    "answer": "검색 엔진"
+  },
+  {
+    "subject": "SW개발",
+    "question": "WSDL의 핵심은?",
+    "answer": "XML 형식"
+  },
+  {
+    "subject": "SW개발",
+    "question": "SOAP의 핵심은?",
+    "answer": "XML 메시지"
+  },
+  {
+    "subject": "SW개발",
+    "question": "REST의 핵심은?",
+    "answer": "HTTP 활용, 주로 JSON 사용"
+  }
+]

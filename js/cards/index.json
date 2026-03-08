@@ -1,0 +1,9 @@
+{
+  "files": [
+    "js/cards/subject-01-database.json",
+    "js/cards/subject-02-network-os.json",
+    "js/cards/subject-03-sw-development.json",
+    "js/cards/subject-04-sw-design.json",
+    "js/cards/subject-05-security-newtech.json"
+  ]
+}
