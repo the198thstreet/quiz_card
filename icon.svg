@@ -1,27 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="정보처리기사 카드퀴즈 아이콘">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#60a5fa" />
-      <stop offset="100%" stop-color="#1d4ed8" />
+    <linearGradient id="surface" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fbff" />
+      <stop offset="100%" stop-color="#dbeafe" />
     </linearGradient>
-    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98" />
-      <stop offset="100%" stop-color="#dbeafe" stop-opacity="0.92" />
+    <linearGradient id="surfaceBack" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eef2ff" />
+      <stop offset="100%" stop-color="#bfdbfe" />
     </linearGradient>
   </defs>
-  <rect width="192" height="192" rx="44" fill="url(#bg)" />
-  <circle cx="144" cy="48" r="28" fill="#ffffff" fill-opacity="0.14" />
-  <circle cx="44" cy="150" r="34" fill="#ffffff" fill-opacity="0.08" />
-  <g transform="translate(34 28)">
-    <rect x="16" y="24" width="104" height="116" rx="22" fill="#0f172a" fill-opacity="0.16" />
-    <rect x="0" y="0" width="112" height="128" rx="24" fill="url(#card)" />
-    <rect x="18" y="22" width="76" height="12" rx="6" fill="#93c5fd" />
-    <rect x="18" y="46" width="56" height="10" rx="5" fill="#cbd5e1" />
-    <rect x="18" y="64" width="76" height="10" rx="5" fill="#cbd5e1" />
-    <rect x="18" y="82" width="44" height="10" rx="5" fill="#cbd5e1" />
-    <rect x="18" y="100" width="50" height="10" rx="5" fill="#bfdbfe" />
-    <path d="M90 69c0-11.05 8.95-20 20-20s20 8.95 20 20-8.95 20-20 20c-3.56 0-6.9-.93-9.79-2.56L90 114z" fill="#2563eb" />
-    <path d="M108 59.5v11.1" stroke="#ffffff" stroke-linecap="round" stroke-width="7" />
-    <path d="M102.45 65.05h11.1" stroke="#ffffff" stroke-linecap="round" stroke-width="7" />
-  </g>
+  <rect width="192" height="192" rx="48" fill="#f5f5f7" />
+  <rect x="58" y="40" width="88" height="112" rx="22" fill="#c7d2fe" transform="rotate(8 102 96)" />
+  <rect x="40" y="32" width="96" height="120" rx="24" fill="url(#surface)" stroke="#93c5fd" stroke-width="4" />
+  <rect x="58" y="50" width="52" height="10" rx="5" fill="#bfdbfe" />
+  <rect x="58" y="68" width="38" height="10" rx="5" fill="#dbeafe" />
+  <path d="M112 112c8.84 0 16-7.16 16-16V80c0-8.84-7.16-16-16-16H84c-8.84 0-16 7.16-16 16v16c0 8.84 7.16 16 16 16h18v14" fill="none" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" />
+  <circle cx="102" cy="136" r="6" fill="#2563eb" />
 </svg>
